@@ -11,6 +11,10 @@ const getAll =() =>{ //
   return post.find({})
 }
 
+const getById = (id) =>{
+  return post.findById(id)
+}
+
 
 
 
@@ -21,4 +25,4 @@ const remove = (id) =>{
 }
 
 
-module.exports = { create , getAll, remove }
+module.exports = { create , getAll, getById, remove }
