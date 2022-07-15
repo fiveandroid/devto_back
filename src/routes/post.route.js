@@ -1,4 +1,4 @@
-const { create, getAll } = require("../usecases/post.usecase");
+const { create, getAll, remove } = require("../usecases/post.usecase");
 const express = require("express");
 const { request } = require("express");
 
@@ -36,4 +36,21 @@ router.get("/", async (request, response) => {
   }
 })
 
+router.delete("/:id", async (request, response) => {
+  const {id} = request.params  
+   try {
+     const post = await remove(id)
+     response.json({
+       success:true,
+       message:"post was deleted"
+     })
+   }catch(error) {
+     response.status(error.status || 400)
+      response.json({
+     success: false,
+       message: "could'nt delete post"
+      })
+   }
+ })
+ 
 module.exports = router;
