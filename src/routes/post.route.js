@@ -22,14 +22,14 @@ router.delete("/:id", async (request, response) => {
      const post = await remove(id)
      response.json({
        success:true,
-       message:"Mentor was deleted"
+       message:"post was deleted"
      })
    }catch(error) {
      response.status(error.status || 400)
-     response.json({
-       success: false,
-       message: error.message
-     })
+      response.json({
+     success: false,
+       message: "could'nt delete post"
+      })
    }
  })
  

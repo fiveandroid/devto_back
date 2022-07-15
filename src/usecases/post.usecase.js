@@ -8,8 +8,8 @@ const create = (postData) => {
 }
 
 const remove = (id) =>{
-  const post = post.findByIdAndDelete(id)
-  return post
+  const resultPost =  post.findByIdAndDelete(id)
+  return resultPost
 }
 
 
