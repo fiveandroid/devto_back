@@ -7,5 +7,10 @@ const create = (postData) => {
   return newPost
 }
 
+const remove = (id) =>{
+  const resultPost =  post.findByIdAndDelete(id)
+  return resultPost
+}
 
-module.exports = { create }
+
+module.exports = { create , remove }
