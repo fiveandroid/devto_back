@@ -7,5 +7,11 @@ const create = (postData) => {
   return newPost
 }
 
+const getAll =() =>{ //
+  return post.find({})
+}
 
-module.exports = { create }
+
+
+
+module.exports = { create, getAll }
