@@ -8,6 +8,9 @@ const getAll = () => {
 }
 
 const getById = (id) => {
+
+  console.log("Lllego getbyid", id )
+  
   return User.findById(id)
 }
 
@@ -23,9 +26,9 @@ const login = async (email, textPlainPassword) => {
   if(!isValidPassword) throw createError(400, "Invalid data")
 
   // Generamos el token con jwt
-  //const token = jwt.sign ({ id: user._id })                      
+  const token = jwt.sign ({ id: user._id })                      
 
-  return "1234"  // token
+  return token
 }
 
 const create = async (userData) => {

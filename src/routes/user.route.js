@@ -29,11 +29,14 @@ router.get("/", async (request, response) => {
 
 })
 
-/*
+
 router.get("/detail", auth, async (request, response) => {
-    const { id } = request.params
+    const { id } = request.body
     try {
       const user =  await getById(id);
+
+      console.log(user)
+
       response.json({
         success: true,
         data: {
@@ -48,7 +51,7 @@ router.get("/detail", auth, async (request, response) => {
       })
     }
   })
-*/
+
 /*
 router.get("/:id", async (request, response) => {
   const { id } = request.params

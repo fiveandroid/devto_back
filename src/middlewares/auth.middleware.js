@@ -2,6 +2,8 @@ const jwt = require("../lib/jwt.lib")
 
 const auth = ( request, response, next ) =>{
 
+    console.log("auth")
+
     try{
         const authorization =  request.headers.authorization || ""
         const token =  authorization.replace("Bearer ", "")
