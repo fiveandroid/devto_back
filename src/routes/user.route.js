@@ -1,11 +1,13 @@
 const express = require("express")
 const { getAll, getById, create } = require("../usecases/user.usecase")
-//const auth = require("../middlewares/auth.middleware")
+const auth = require("../middlewares/auth.middleware")
 
 const router = express.Router();
 
 // router.use(auth)
 
+
+// Lista los usuarios
 router.get("/", async (request, response) => {
     console.log("Llego")
   try {
@@ -27,11 +29,14 @@ router.get("/", async (request, response) => {
 
 })
 
-/*
+
 router.get("/detail", auth, async (request, response) => {
-    const { id } = request.params
+    const { id } = request.body
     try {
       const user =  await getById(id);
+
+      console.log(user)
+
       response.json({
         success: true,
         data: {
@@ -46,7 +51,8 @@ router.get("/detail", auth, async (request, response) => {
       })
     }
   })
-*/
+
+/*
 router.get("/:id", async (request, response) => {
   const { id } = request.params
   try {
@@ -65,8 +71,13 @@ router.get("/:id", async (request, response) => {
     })
   }
 })
+*/
 
+//Crea un usuario
 router.post("/", async (request, response) => {
+
+  console.log("entro user")
+
   try {
     const user =  await create(request.body);
     response.status(201)
