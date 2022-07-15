@@ -1,4 +1,4 @@
-const { create, getAll, remove } = require("../usecases/post.usecase");
+const { create, getAll, getById, remove } = require("../usecases/post.usecase");
 const express = require("express");
 const { request } = require("express");
 
@@ -28,6 +28,26 @@ router.get("/", async (request, response) => {
     })
 
   } catch (error) {
+    response.status(error.status || 500)
+    response.json({
+      sucess: false,
+      message: error.message
+    })
+  }
+})
+
+router.get("/:id", async (request, response)=>{
+  const {id} = request.params
+
+  try{
+    const post = await getById(id)
+    response.json({
+      sucess: true,
+      data:{
+        post
+      }
+    })
+  } catch(error){
     response.status(error.status || 500)
     response.json({
       sucess: false,
