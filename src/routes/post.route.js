@@ -1,5 +1,6 @@
-const { create } = require("../usecases/post.usecase");
+const { create, getAll, remove } = require("../usecases/post.usecase");
 const express = require("express");
+const { request } = require("express");
 
 const router = express.Router();
 
@@ -16,4 +17,40 @@ router.post("/crear/", async (request, response) => {
   });
 });
 
+router.get("/", async (request, response) => {
+  try {
+    const post = await getAll();
+    response.json({
+      sucess: true,
+      data: {
+        post
+      }
+    })
+
+  } catch (error) {
+    response.status(error.status || 500)
+    response.json({
+      sucess: false,
+      message: error.message
+    })
+  }
+})
+
+router.delete("/:id", async (request, response) => {
+  const {id} = request.params  
+   try {
+     const post = await remove(id)
+     response.json({
+       success:true,
+       message:"post was deleted"
+     })
+   }catch(error) {
+     response.status(error.status || 400)
+      response.json({
+     success: false,
+       message: "could'nt delete post"
+      })
+   }
+ })
+ 
 module.exports = router;
