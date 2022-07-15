@@ -19,10 +19,7 @@ app.use("/post", routerPost)
 
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 2a8b285aaef1dfd40a0ddc23cb6c14f6e658c021
 app.get("/", (request, response) => {
     response.json({
       message: "Endpoint de Home, Bienvenido a nuestra API de DevTo"
