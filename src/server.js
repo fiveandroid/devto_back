@@ -17,9 +17,6 @@ app.use("/users", routerUsers)
 app.use("/login", routerAuth)
 app.use("/post", routerPost)
 
-
-
-
 app.get("/", (request, response) => {
     response.json({
       message: "Endpoint de Home, Bienvenido a nuestra API de DevTo"
