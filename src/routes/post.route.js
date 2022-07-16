@@ -1,6 +1,7 @@
 const { create, getAll, getById, remove } = require("../usecases/post.usecase");
 const express = require("express");
 const { request } = require("express");
+const auth = require("../middlewares/auth.middleware");
 
 const router = express.Router();
 
@@ -56,7 +57,7 @@ router.get("/:id", async (request, response)=>{
   }
 })
 
-router.delete("/:id", async (request, response) => {
+router.delete("/:id",auth, async (request, response) => {
   const {id} = request.params  
    try {
      const post = await remove(id)
