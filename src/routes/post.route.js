@@ -1,4 +1,4 @@
-const { create, getAll, getById, remove } = require("../usecases/post.usecase");
+const { create, getAll, getById, remove, update } = require("../usecases/post.usecase");
 const express = require("express");
 const { request } = require("express");
 
@@ -69,6 +69,27 @@ router.delete("/:id", async (request, response) => {
       response.json({
      success: false,
        message: "could'nt delete post"
+      })
+   }
+ })
+
+ router.patch("/actualizar/:id", async (request, response) => {
+  const {id} = request.params 
+  const newBody = request.body 
+   try {
+     const post = await update(id ,newBody)
+     response.json({
+       success:true,
+       message:"post was updated",
+       data: {
+        post
+       }
+     })
+   }catch(error) {
+     response.status(error.status || 400)
+      response.json({
+     success: false,
+       message: "could'nt update post"
       })
    }
  })

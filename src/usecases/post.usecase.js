@@ -16,13 +16,17 @@ const getById = (id) =>{
 }
 
 
+const update = async (id, postData) => {
+  // Lo del signup, crear cuenta
+  const newPost = post.findByIdAndUpdate(id, postData) 
+  return newPost
+}
 
 
-module.exports = { create, getAll }
 const remove = (id) =>{
   const resultPost =  post.findByIdAndDelete(id)
   return resultPost
 }
 
 
-module.exports = { create , getAll, getById, remove }
+module.exports = { create , getAll, getById, remove, update }
